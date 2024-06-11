@@ -93,7 +93,7 @@ class MainClass
                    
                     }
        // Console.WriteLine(st[st.Length]);*/
-        int[] a = new int[]  { 1, 2, 5, 6, 9, 3};
+        int[] a = new int[]  { 1, -2, -5, 6, 9, 3};
 
         /* Console.Write("Количество строк: ");
         Console.WriteLine(a.GetUpperBound(0) + 1 + " ");
@@ -112,12 +112,13 @@ class MainClass
       /*  foreach (var item in a)
         {
             Console.Write(item + " ");
-        } */
+        } 
         int temp = 0; 
-        for(int i = 0; i < a.Length; i++)
+
+        for(int i = 0; i < a.GetUpperBound(0) + 1; i++)
         {
              
-            for (int j = i+1; j < a.Length; j++)
+            for (int j = i+1; j < a.GetUpperBound(0) + 1; j++)
             {
                 if (a[i] > a[j])
                 {
@@ -126,18 +127,21 @@ class MainClass
                     a[j] = temp;
                 }
             }
-        }
+        } */
         //вывод
-         int sum = 0; 
+        int sum = 0; 
         Console.WriteLine("Вывод сортированного массива:"); 
         for(int i = 0;i < a.Length; i++)
         {
+            if (a[i] > 0)
+            {  sum++; 
+            }
             Console.Write(a[i] + " ");
-            sum += a[i];
+           // sum += a[i];
            
         
         }
-        Console.Write("Сумма элементов равняется: {0}", sum);
+        Console.Write("Количество положительных элементов массива: {0}", sum);
 
 
 
