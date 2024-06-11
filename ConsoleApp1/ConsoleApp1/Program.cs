@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
+
 class MainClass
 {
     public static void Main(string[] args)
@@ -25,23 +27,25 @@ class MainClass
           Console.WriteLine("Какой ваш любимый день недели?");
 
           DayOfWeek dayOfWeek = (DayOfWeek) byte.Parse(Console.ReadLine());
-          Console.WriteLine("Ваш любимый день недели {0}", dayOfWeek); */
-        Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
-
-        var color = Console.ReadLine();
-
-         switch(color)
+          Console.WriteLine("Ваш любимый день недели {0}", dayOfWeek); 
+        string[] favcolors = new string[3]; 
+        for (int i = 0; i < favcolors.Length; i++)
         {
-            case "red":
-            
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("Введите любимый цвет номер {0}", i + 1);
+            favcolors[i] = Console.ReadLine(); 
+        }
+        foreach(var color  in favcolors)
+        {
+            switch (color)
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
 
-                Console.WriteLine("Your color is red!");
-                break;
+                    Console.WriteLine("Your color is red!");
+                    break;
 
-            case "green":
-
+                case "green":
                     Console.BackgroundColor = ConsoleColor.Green;
                     Console.ForegroundColor = ConsoleColor.Black;
 
@@ -49,20 +53,49 @@ class MainClass
                     break;
 
                 case "cyan":
-
-                    Console.BackgroundColor = ConsoleColor.Yellow;
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
 
                     Console.WriteLine("Your color is cyan!");
                     break;
-            default:
-                Console.BackgroundColor = ConsoleColor.Green;  
-                Console.ForegroundColor = ConsoleColor.Black;
-            break; 
+                default:
+                    continue;
+            }
 
+            
+            if (color == "stop")
+            {
+                Console.WriteLine("Цикл прерван");
+                break;
+            }
 
-                }
-     }
+            Console.WriteLine("Привет, \n мир");
+        } */
+
+        Console.WriteLine("Введите ваше имя");
+        string st = Console.ReadLine();
+        foreach (var ch in st)
+        {
+
+            Console.Write(ch + " ");
+            
+        }
+        Console.WriteLine();
+        Console.Write("Последняя буква вашего имени {0}", st[st.Length - 1]);
+        // Console.Write(ch + " ");  
+        for (int i = st.Length - 1; i >= 0; i--)
+                 {
+            Console.Write(st[i] + " ");
+               // Console.Write(i);
+                   
+                    }
+       // Console.WriteLine(st[st.Length]);
+
+        
+      
+
+    }
+}
         
     enum DaysOfWeek: byte
         {
@@ -71,4 +104,4 @@ class MainClass
         }
 
 
-}
+
