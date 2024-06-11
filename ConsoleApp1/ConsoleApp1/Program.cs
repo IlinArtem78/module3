@@ -93,54 +93,59 @@ class MainClass
                    
                     }
        // Console.WriteLine(st[st.Length]);*/
-        int[] a = new int[]  { 1, -2, -5, 6, 9, 3};
-
-        /* Console.Write("Количество строк: ");
+        int[,] a = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
+         Console.Write("Количество строк: ");
         Console.WriteLine(a.GetUpperBound(0) + 1 + " ");
 
         Console.Write("Количество колонок: ");
         Console.WriteLine(a.GetUpperBound(1) + 1 + " ");
-
-        for (int i = 0; i < a.GetUpperBound(1) + 1; i++)
+        int sum = 0; 
+        for (int i = 0; i < a.GetUpperBound(0) + 1; i++)
         {
-            for(int j=0; j < a.GetUpperBound(0) + 1; j++)
-                Console.Write(a[j, i] + " ");
-
+            for(int j=0; j < a.GetUpperBound(1) + 1; j++)
+                if (a[i,j] > 0)
+                {
+                  sum++;
+                }
+                
+               // Console.Write(a[i, j] + " ");
+                    
             Console.WriteLine();
         }
-      //Console.WriteLine(a.GetUpperBound(0));
-      /*  foreach (var item in a)
-        {
-            Console.Write(item + " ");
-        } 
-        int temp = 0; 
 
-        for(int i = 0; i < a.GetUpperBound(0) + 1; i++)
-        {
-             
-            for (int j = i+1; j < a.GetUpperBound(0) + 1; j++)
-            {
-                if (a[i] > a[j])
-                {
-                    temp = a[i];
-                    a[i] = a[j]; 
-                    a[j] = temp;
-                }
-            }
-        } */
-        //вывод
-        int sum = 0; 
-        Console.WriteLine("Вывод сортированного массива:"); 
-        for(int i = 0;i < a.Length; i++)
-        {
-            if (a[i] > 0)
-            {  sum++; 
-            }
-            Console.Write(a[i] + " ");
-           // sum += a[i];
-           
-        
-        }
+        //Console.WriteLine(a.GetUpperBound(0));
+        /*  foreach (var item in a)
+          {
+              Console.Write(item + " ");
+          } 
+          int temp = 0; 
+
+          for(int i = 0; i < a.GetUpperBound(0) + 1; i++)
+          {
+
+              for (int j = i+1; j < a.GetUpperBound(0) + 1; j++)
+              {
+                  if (a[i] > a[j])
+                  {
+                      temp = a[i];
+                      a[i] = a[j]; 
+                      a[j] = temp;
+                  }
+              }
+          } 
+          //вывод
+          int sum = 0; 
+          Console.WriteLine("Вывод сортированного массива:"); 
+          for(int i = 0;i < a.Length; i++)
+          {
+              if (a[i] > 0)
+              {  sum++; 
+              }
+              Console.Write(a[i] + " ");
+             // sum += a[i];
+
+
+          }*/
         Console.Write("Количество положительных элементов массива: {0}", sum);
 
 
