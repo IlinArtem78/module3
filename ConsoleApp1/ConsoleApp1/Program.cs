@@ -94,24 +94,31 @@ class MainClass
                     }
        // Console.WriteLine(st[st.Length]);*/
         int[,] a = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
-         Console.Write("Количество строк: ");
+        Console.Write("Количество строк: ");
         Console.WriteLine(a.GetUpperBound(0) + 1 + " ");
-
         Console.Write("Количество колонок: ");
         Console.WriteLine(a.GetUpperBound(1) + 1 + " ");
+        int temp = 0; 
         int sum = 0; 
         for (int i = 0; i < a.GetUpperBound(0) + 1; i++)
         {
-            for(int j=0; j < a.GetUpperBound(1) + 1; j++)
-                if (a[i,j] > 0)
-                {
-                  sum++;
-                }
+            for (int j = 0; j < a.GetUpperBound(1)+ 1; j++)
+            {
+                for (int k = j+1;  k < a.GetUpperBound(1) + 1; k++)
+                    if (a[i,j] > a[i,k])
+                    {
+                        temp = a[i,j];
+                        a[i,j] = a[i,k];
+                        a[i,k] = temp;
+                    }
+                Console.Write(a[i, j] + " ");
+            }
                 
-               // Console.Write(a[i, j] + " ");
+               
                     
             Console.WriteLine();
         }
+        
 
         //Console.WriteLine(a.GetUpperBound(0));
         /*  foreach (var item in a)
