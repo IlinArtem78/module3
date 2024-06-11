@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.Diagnostics.CodeAnalysis;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class MainClass
 {
@@ -70,7 +72,7 @@ class MainClass
             }
 
             Console.WriteLine("Привет, \n мир");
-        } */
+        } 
 
         Console.WriteLine("Введите ваше имя");
         string st = Console.ReadLine();
@@ -82,6 +84,7 @@ class MainClass
         }
         Console.WriteLine();
         Console.Write("Последняя буква вашего имени {0}", st[st.Length - 1]);
+        Console.WriteLine();
         // Console.Write(ch + " ");  
         for (int i = st.Length - 1; i >= 0; i--)
                  {
@@ -89,10 +92,58 @@ class MainClass
                // Console.Write(i);
                    
                     }
-       // Console.WriteLine(st[st.Length]);
+       // Console.WriteLine(st[st.Length]);*/
+        int[] a = new int[]  { 1, 2, 5, 6, 9, 3};
 
+        /* Console.Write("Количество строк: ");
+        Console.WriteLine(a.GetUpperBound(0) + 1 + " ");
+
+        Console.Write("Количество колонок: ");
+        Console.WriteLine(a.GetUpperBound(1) + 1 + " ");
+
+        for (int i = 0; i < a.GetUpperBound(1) + 1; i++)
+        {
+            for(int j=0; j < a.GetUpperBound(0) + 1; j++)
+                Console.Write(a[j, i] + " ");
+
+            Console.WriteLine();
+        }
+      //Console.WriteLine(a.GetUpperBound(0));
+      /*  foreach (var item in a)
+        {
+            Console.Write(item + " ");
+        } */
+        int temp = 0; 
+        for(int i = 0; i < a.Length; i++)
+        {
+             
+            for (int j = i+1; j < a.Length; j++)
+            {
+                if (a[i] > a[j])
+                {
+                    temp = a[i];
+                    a[i] = a[j]; 
+                    a[j] = temp;
+                }
+            }
+        }
+        //вывод
+         int sum = 0; 
+        Console.WriteLine("Вывод сортированного массива:"); 
+        for(int i = 0;i < a.Length; i++)
+        {
+            Console.Write(a[i] + " ");
+            sum += a[i];
+           
         
-      
+        }
+        Console.Write("Сумма элементов равняется: {0}", sum);
+
+
+
+
+
+
 
     }
 }
