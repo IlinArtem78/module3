@@ -66,6 +66,8 @@ class MainClass
 
         GetDataFromConsole();
 
+        int[] papa =  GetArray();
+
         Console.WriteLine("Введите три своих любимых цвета");
         var favcolors = new string[3]; 
         for (int i = 0; i < 3; i++)
@@ -75,6 +77,41 @@ class MainClass
         }
 
     }
+    static int[] GetArray()
+    {
+        var result = new int[5];
+        int  temp = 0; 
+        for (int i = 0;i < result.Length; i++)
+        {
+            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+            result[i] = int.Parse(Console.ReadLine());
+        }
+        for (int k = 0; k < result.Length - 1; k++)
+        {
+            for (int j = k + 1 ; j < result.Length; j++)
+            {
+                if (result[k] > result[j])
+                {
+                    temp = result[k];
+                    result[k] = result[j];
+                    result[j] = temp;
+
+                }
+
+            }
+        }
+        Console.WriteLine("Вывод отсортированного массива"); 
+
+
+        return result;
+
+    }
+
+
+
+
+
+
 }
 
 
