@@ -62,15 +62,15 @@ class MainClass
    
         int n = 6;    
        var array = GetArrayFromConsole(ref n); //задание массива array
-      //  var sortedarray = SortArray(array); //сортировка массива
-      //  var sortedarray = ShowArray(array,true);
+                                               //  var sortedarray = SortArray(array); //сортировка массива
+                                               //  var sortedarray = ShowArray(array,true);
 
-     //   ChangeAge(ref MyAge); // При передаче значений параметрам по ссылке метод получает адрес переменной в памяти.
-                              // И, таким образом, если в методе изменяется значение параметра, передаваемого по ссылке, то также изменяется и значение переменной,
-                              // которая передается на его место..
+        //   ChangeAge(ref MyAge); // При передаче значений параметрам по ссылке метод получает адрес переменной в памяти.
+        // И, таким образом, если в методе изменяется значение параметра, передаваемого по ссылке, то также изменяется и значение переменной,
+        // которая передается на его место..
 
-      
 
+        GetAge(out )
 
 
     }
@@ -90,8 +90,12 @@ class MainClass
                  }
         return result;
     }
-
-        static int[] SortArray(int[] array)
+    static void GetAge(out string Name, out byte Age)
+    {
+        Name = Console.ReadLine(); 
+        Age = Convert.ToByte(Console.ReadLine());
+    }
+    static int[] SortArray(int[] array)
     {
         int temp = 0;
         
