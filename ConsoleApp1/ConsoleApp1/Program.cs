@@ -59,25 +59,29 @@ class MainClass
 
     public static void Main(string[] args)
     {
-      //  string[] favcolors = {"red", "green", "cyan", "yellow"}; 
+        //  string[] favcolors = {"red", "green", "cyan", "yellow"}; 
 
-       // (string F_Name, string S_Name, string login, int l_login, bool Pit, byte Age) User;
-        
-       // Console.WriteLine("Введите свое имя:");
-       //  User.F_Name = Console.ReadLine();
+        // (string F_Name, string S_Name, string login, int l_login, bool Pit, byte Age) User;
+
+        // Console.WriteLine("Введите свое имя:");
+        //  User.F_Name = Console.ReadLine();
         // Console.WriteLine("Ваше имя {0}", User.F_Name);
-       //  Console.WriteLine("Введите свой возраст:");
+        //  Console.WriteLine("Введите свой возраст:");
         // User.Age = Convert.ToByte(Console.ReadLine());
-      //   Console.WriteLine("Ваше возраст {0}", User.Age);
+        //   Console.WriteLine("Ваше возраст {0}", User.Age);
 
-       //  Console.WriteLine("Введите три своих любимых цвета");
-       
-       
+        //  Console.WriteLine("Введите три своих любимых цвета");
+
+        int MyAge = 29; 
        //  ShowColor(User.F_Name, favcolors);
-        int [] array = new int [10];  
+     //   int [] array = new int [10];  
      //  var array = GetArrayFromConsole(10); //задание массива array
       //  var sortedarray = SortArray(array); //сортировка массива
-        var sortedarray = ShowArray(array,true);
+      //  var sortedarray = ShowArray(array,true);
+
+        ChangeAge(ref MyAge); // При передаче значений параметрам по ссылке метод получает адрес переменной в памяти.
+                              // И, таким образом, если в методе изменяется значение параметра, передаваемого по ссылке, то также изменяется и значение переменной,
+                              // которая передается на его место..
     }
 
 
@@ -154,6 +158,14 @@ class MainClass
 
 
         return arr;
+
+    }
+
+
+    static void ChangeAge(ref int age)
+    {
+        Console.WriteLine("Введите свой возраст:"); 
+        age = Convert.ToByte(Console.ReadLine()); 
 
     }
 
