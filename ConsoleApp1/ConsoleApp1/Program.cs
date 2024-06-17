@@ -59,33 +59,24 @@ class MainClass
 
     public static void Main(string[] args)
     {
-        //  string[] favcolors = {"red", "green", "cyan", "yellow"}; 
-
-        // (string F_Name, string S_Name, string login, int l_login, bool Pit, byte Age) User;
-
-        // Console.WriteLine("Введите свое имя:");
-        //  User.F_Name = Console.ReadLine();
-        // Console.WriteLine("Ваше имя {0}", User.F_Name);
-        //  Console.WriteLine("Введите свой возраст:");
-        // User.Age = Convert.ToByte(Console.ReadLine());
-        //   Console.WriteLine("Ваше возраст {0}", User.Age);
-
-        //  Console.WriteLine("Введите три своих любимых цвета");
-
-        int MyAge = 29; 
-       //  ShowColor(User.F_Name, favcolors);
-     //   int [] array = new int [10];  
-     //  var array = GetArrayFromConsole(10); //задание массива array
+   
+        int n = 6;    
+       var array = GetArrayFromConsole(ref n); //задание массива array
       //  var sortedarray = SortArray(array); //сортировка массива
       //  var sortedarray = ShowArray(array,true);
 
-        ChangeAge(ref MyAge); // При передаче значений параметрам по ссылке метод получает адрес переменной в памяти.
+     //   ChangeAge(ref MyAge); // При передаче значений параметрам по ссылке метод получает адрес переменной в памяти.
                               // И, таким образом, если в методе изменяется значение параметра, передаваемого по ссылке, то также изменяется и значение переменной,
                               // которая передается на его место..
+
+      
+
+
+
     }
 
 
-    static int[] GetArrayFromConsole(int num)
+    static int[] GetArrayFromConsole(ref int num)
         {
             var result = new int[num];
             for (int i = 0; i < result.Length; i++)
@@ -93,6 +84,10 @@ class MainClass
                 Console.WriteLine("Введите элемент массива номер {0}", i + 1);
                 result[i] = int.Parse(Console.ReadLine());
             }
+            foreach (int k in result) {
+            Console.WriteLine(k + " ");  
+            
+                 }
         return result;
     }
 
@@ -169,7 +164,10 @@ class MainClass
 
     }
 
-
+    static void BigDataOperation(in int[] arr) //IN - этот модификатор защищает данные от изменения: в методе их изменить нельзя, но сам параметр при этом передается по ссылке.
+    {
+        arr[0] = 4;
+    }
 }
 
 
