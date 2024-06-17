@@ -60,19 +60,23 @@ class MainClass
     public static void Main(string[] args)
     {
    
-        int n = 6;    
-       var array = GetArrayFromConsole(ref n); //задание массива array
-                                               //  var sortedarray = SortArray(array); //сортировка массива
-                                               //  var sortedarray = ShowArray(array,true);
+    //   int n = 6;
+     //   (string Name, byte Age) USER;
+        int[] a1 = {0,-5,6,7,4,3,2,1,-2,8};
+        int[] a2 = new int[10];
+        int[] a3 = new int[10];
+        // var array = GetArrayFromConsole(ref n); //задание массива array
+        //  var sortedarray = SortArray(array); //сортировка массива
+        //  var sortedarray = ShowArray(array,true);
 
         //   ChangeAge(ref MyAge); // При передаче значений параметрам по ссылке метод получает адрес переменной в памяти.
         // И, таким образом, если в методе изменяется значение параметра, передаваемого по ссылке, то также изменяется и значение переменной,
         // которая передается на его место..
 
+        SortArray(in a1, out a2, out a3);
+      //  GetAge(out USER.Name, out USER.Age); 
 
-        GetAge(out )
-
-
+      
     }
 
 
@@ -95,34 +99,73 @@ class MainClass
         Name = Console.ReadLine(); 
         Age = Convert.ToByte(Console.ReadLine());
     }
-    static int[] SortArray(int[] array)
+
+    static void SortArray(in int[] array, out int[] sorteddesc, out int[] sorted_asc ) 
+    {
+
+       sorteddesc = SortArrayDesc(array);
+       sorted_asc = SortArrayAsc(array);
+
+    }
+
+
+    static int[] SortArrayDesc(int[] arr1)
     {
         int temp = 0;
-        
-        for (int k = 0; k < array.Length - 1; k++)
+
+        for (int k = 0; k < arr1.Length - 1; k++)
         {
-            for (int j = k + 1; j < array.Length; j++)
+            for (int j = k + 1; j < arr1.Length; j++)
             {
-                if (array[k] > array[j])
+                if (arr1[k] < arr1[j])
                 {
-                    temp = array[k];
-                    array[k] = array[j];
-                    array[j] = temp;
+                    temp = arr1[k];
+                    arr1[k] = arr1[j];
+                    arr1[j] = temp;
 
                 }
 
             }
         }
         Console.WriteLine("Вывод отсортированного массива : ");
-        for (int i = 0; i < array.Length; i++)
+        for (int i = 0; i < arr1.Length; i++)
         {
-            Console.WriteLine(array[i] + " ");
+            Console.WriteLine(arr1[i] + " ");
         }
 
-        return array;
+        return arr1;
+    }
+    static int[] SortArrayAsc(int[] arr2)
+    {
+        int temp = 0;
+
+        for (int k = 0; k < arr2.Length - 1; k++)
+        {
+            for (int j = k + 1; j < arr2.Length; j++)
+            {
+                if (arr2[k] > arr2[j])
+                {
+                    temp = arr2[k];
+                    arr2[k] = arr2[j];
+                    arr2[j] = temp;
+
+                }
+
+            }
+        }
+        Console.WriteLine("Вывод отсортированного массива : ");
+        for (int i = 0; i < arr2.Length; i++)
+        {
+            Console.WriteLine(arr2[i] + " ");
+        }
+
+        return arr2;
 
 
     }
+
+
+
 
     static int[] ShowArray(int[] arr, bool show, bool nonParametr =  false)
     {
