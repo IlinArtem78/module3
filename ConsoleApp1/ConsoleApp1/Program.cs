@@ -8,6 +8,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 class MainClass
 {
 
+
+
+
     static void ShowColor(string username, params string[] favcolors)  //static - модификатор метода
     {
 
@@ -56,28 +59,43 @@ class MainClass
   
     static string GetDataFromConsole() => Console.ReadLine(); //работает только с методами где только одна операция
 
-
-    public static void Main(string[] args)
+    static void ChangeAge(ref int age)
     {
-   
-    //   int n = 6;
-     //   (string Name, byte Age) USER;
-        int[] a1 = {0,-5,6,7,4,3,2,1,-2,8};
-        int[] a2 = new int[10];
-        int[] a3 = new int[10];
-        // var array = GetArrayFromConsole(ref n); //задание массива array
-        //  var sortedarray = SortArray(array); //сортировка массива
-        //  var sortedarray = ShowArray(array,true);
+        Console.WriteLine("Введите свой возраст:");
+        age = Convert.ToByte(Console.ReadLine());
+        ChangeAge(ref age);
 
-        //   ChangeAge(ref MyAge); // При передаче значений параметрам по ссылке метод получает адрес переменной в памяти.
-        // И, таким образом, если в методе изменяется значение параметра, передаваемого по ссылке, то также изменяется и значение переменной,
-        // которая передается на его место..
-
-        SortArray(in a1, out a2, out a3);
-      //  GetAge(out USER.Name, out USER.Age); 
-
-      
     }
+   
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Напишите что-то");
+
+            var str = Console.ReadLine();
+
+            Console.WriteLine("Укажите глубину эха");
+
+            var deep = int.Parse(Console.ReadLine());
+
+                Echo(str,deep);
+            
+        }
+
+        static void Echo(string phrase, int deep)
+        {
+        var modif = phrase; 
+        if (modif.Length > 2)
+        {
+            modif = modif.Remove(0, 2);
+        }
+
+        Console.WriteLine("..." + modif);
+        if (deep > 1)
+        {
+            Echo(modif, deep - 1);
+        }
+    }
+   
 
 
     static int[] GetArrayFromConsole(ref int num)
@@ -204,12 +222,7 @@ class MainClass
     }
 
 
-    static void ChangeAge(ref int age)
-    {
-        Console.WriteLine("Введите свой возраст:"); 
-        age = Convert.ToByte(Console.ReadLine()); 
-
-    }
+ 
 
     static void BigDataOperation(in int[] arr) //IN - этот модификатор защищает данные от изменения: в методе их изменить нельзя, но сам параметр при этом передается по ссылке.
     {
