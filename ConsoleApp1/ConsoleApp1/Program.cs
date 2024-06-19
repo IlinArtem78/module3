@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
@@ -11,7 +12,7 @@ class MainClass
 
 
 
-    static void ShowColor(string username, params string[] favcolors)  //static - модификатор метода
+    static void ShowColor(string username, string[] favcolors)  //static - модификатор метода
     {
 
         Console.WriteLine("{0} \nНапишите свой любимый цвет на английском с маленькой буквы ", username);
@@ -51,6 +52,7 @@ class MainClass
                     Console.WriteLine("Your color is yellow!");
                     break;
             }
+            
         }
     }
        
@@ -69,15 +71,17 @@ class MainClass
    
         public static void Main(string[] args)
         {
-            Console.WriteLine("Напишите что-то");
+           // Console.WriteLine("Напишите что-то");
 
-            var str = Console.ReadLine();
+           // var str = Console.ReadLine();
 
-            Console.WriteLine("Укажите глубину эха");
+           // Console.WriteLine("Укажите глубину эха");
 
-            var deep = int.Parse(Console.ReadLine());
+           // var deep = int.Parse(Console.ReadLine());
 
-                Echo(str,deep);
+           //     Echo(str,deep);
+        decimal A = Factorial(20); 
+        Console.WriteLine("Значение факториала = {0}", A);
             
         }
 
@@ -89,13 +93,43 @@ class MainClass
             modif = modif.Remove(0, 2);
         }
 
-        Console.WriteLine("..." + modif);
+        
         if (deep > 1)
         {
             Echo(modif, deep - 1);
+
+            
+            
+                    Console.BackgroundColor = (ConsoleColor) deep;
+                    Console.WriteLine("..." + modif);
+
+              
+            
+
         }
+
+        
+
+
+
     }
+
    
+        static decimal Factorial (int x)
+            {
+        if (x == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return x * Factorial(x - 1); 
+        }
+
+
+            }
+
+
 
 
     static int[] GetArrayFromConsole(ref int num)
