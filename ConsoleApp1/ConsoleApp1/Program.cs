@@ -29,7 +29,7 @@ class MainClass
    
     Запросить количество любимых цветов;
     Вызвать метод, который возвращает массив любимых цветов по их количеству(заполнение с клавиатуры);
-   1 Сделать проверку, ввёл ли пользователь корректные числа: возраст, количество питомцев, количество цветов в отдельном методе;
+    Сделать проверку, ввёл ли пользователь корректные числа: возраст, количество питомцев, количество цветов в отдельном методе;
     Требуется проверка корректного ввода значений и повтор ввода, если ввод некорректен;
     Корректный ввод: ввод числа типа int больше 0.
     Метод, который принимает кортеж из предыдущего шага и показывает на экран данные. 
@@ -38,7 +38,7 @@ class MainClass
 
     static void Anketa()  // объявление метода 
     {
-     (string F_Name, string S_Name, byte Age, string HavePit, byte PitKol) User; //КОРТЕЖ для работы внутри метода
+     (string F_Name, string S_Name, byte Age, string HavePit, byte PitKol, byte KolColor, string[] favcolor) User; //КОРТЕЖ для работы внутри метода
     Console.WriteLine("Введите свое имя: ");
     User.F_Name = Console.ReadLine();
     Console.WriteLine("Ваше имя {0}", User.F_Name);
@@ -46,11 +46,10 @@ class MainClass
     User.S_Name = Console.ReadLine();
     Console.WriteLine("Ваша фамилия {0}", User.S_Name);
     //вспомогательные переменные
-    string AgeS; 
-    byte AgeCur;    
-    string NumPit;
-    byte NPit;     
-       
+    string AgeS, NumPit, NumColor; 
+    byte AgeCur, NPit, NColor;    
+    string[] st;
+ 
         do
         {
             Console.WriteLine("Введите ваш возраст:");
@@ -70,26 +69,35 @@ class MainClass
                NumPit = Console.ReadLine();
             } while (CheckNum(NumPit, out NPit));
             User.PitKol = NPit;
-            string[] st; 
-            st = NamePit(in User.PitKol); 
+            Console.WriteLine("Введите имена питомцев:"); 
+            
+            st = NameEnter(in User.PitKol); 
 
         } else if (HavePit == "Нет" || HavePit == "False")
         {
-            Console.WriteLine("У вас нет питомцев.");
-            User.PitKol = 0;
+            Console.WriteLine("У вас нет питомцев. ");
+            
         }
+        do
+        {
+            Console.WriteLine("Сколько у Вас любимых цветов?");
+            NumColor = Console.ReadLine();
+        } while (CheckNum(NumColor, out NColor));
+        User.KolColor = NColor;
+        Console.WriteLine("Введите ваши любимые цвета:");
+        User.favcolor = NameEnter(User.KolColor); 
 
 
 
-      
     }
-    //Если питомец есть, вызвать метод, принимающий на вход количество питомцев и возвращающий массив их кличек(заполнение с клавиатуры);
-    static string[] NamePit(in byte num)
+    //Метод для заполнение данных с  клавиатуры;
+    static string[] NameEnter(in byte num)
     {
         var st = new string[num]; 
         for (int i = 0; i < st.Length; i++)
         {
             Console.ReadLine();
+            Console.WriteLine(st[i]);
         }
      
         return st;
@@ -99,10 +107,11 @@ class MainClass
     //Метод для проверки правильности введенного количетсва (возраста, питомца и т.д.)
     static bool CheckNum(string input, out byte output)
     {
-        byte output1; 
+
+        byte output1; //доп.переменная 
         bool nCorrect = byte.TryParse(input, out output1);
-        if (nCorrect)
-        {
+        if (nCorrect == true & output1 > 0)
+        {  
             output = output1;
             Console.WriteLine("Ваши данные: {0}", output);
             
