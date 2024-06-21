@@ -10,6 +10,24 @@ class Human
     {
         Console.WriteLine("Меня зовут {0}, мне {1}", name, age);
     }
+    // Конструктор 1
+    public Human()
+    {
+        name = "Неизвестно";
+        age = 20;
+    }
+    // Конструктор 2
+    public Human(string n)
+    {
+        name = n;
+        age = 20;
+    }
+    // Конструктор 3
+    public Human(string n, int a)
+    {
+        name = n;
+        age = a;
+    }
 }
 
 struct Animal
@@ -23,5 +41,45 @@ struct Animal
     public void Info()
     {
         Console.WriteLine("Это {0} по кличке {1}, ему {2}", type, name, age);
+    }
+}
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Human human = new Human();//вызов класса (конструктор)
+        Human human1 = new Human("Артем");
+        Human human2 = new Human("Артем", 29);
+       
+        ExternalClass.ClassInternalClass newClass;
+        ExternalStruct.StructInternalStruct newStruct;
+        Console.WriteLine(human); 
+        Console.WriteLine(human1);
+        Console.WriteLine(human2);
+    }
+   
+
+
+}
+class ExternalClass
+{
+    public class ClassInternalClass
+    {
+    }
+
+    struct ClassInternalStruct // невозможно сослаться так как объект не public. 
+    {
+    }
+}
+
+class ExternalStruct
+{
+    class StructInternalClass // невозможно сослаться так как объект не public. 
+    {
+    }
+
+    public struct StructInternalStruct
+    {
     }
 }
