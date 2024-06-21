@@ -12,7 +12,7 @@ class MainClass
    
         public static void Main(string[] args)
         {
-    //    (string F_Name, string S_Name, byte Age, string HavePit, byte PitKol) Name;
+    //    (string F_Name, string S_Name, int Age, string HavePit, int PitKol) Name;
         Anketa();
 
         }
@@ -38,7 +38,7 @@ class MainClass
 
     static void Anketa()  // объявление метода 
     {
-     (string F_Name, string S_Name, byte Age, string HavePit, byte PitKol, byte KolColor, string[] favcolor) User; //КОРТЕЖ для работы внутри метода
+     (string F_Name, string S_Name, int Age, string HavePit, int PitKol, int KolColor, string[] favcolor) User; //КОРТЕЖ для работы внутри метода
     Console.WriteLine("Введите свое имя: ");
     User.F_Name = Console.ReadLine();
     Console.WriteLine("Ваше имя {0}", User.F_Name);
@@ -47,7 +47,7 @@ class MainClass
     Console.WriteLine("Ваша фамилия {0}", User.S_Name);
     //вспомогательные переменные
     string AgeS, NumPit, NumColor; 
-    byte AgeCur, NPit, NColor;    
+    int AgeCur, NPit, NColor;    
     string[] st;
  
         do
@@ -91,7 +91,7 @@ class MainClass
 
     }
     //Метод для заполнение данных с  клавиатуры;
-    static string[] NameEnter(in byte num)
+    static string[] NameEnter(in int num)
     {
         var st = new string[num]; 
         for (int i = 0; i < st.Length; i++)
@@ -105,11 +105,11 @@ class MainClass
 
   
     //Метод для проверки правильности введенного количетсва (возраста, питомца и т.д.)
-    static bool CheckNum(string input, out byte output)
+    static bool CheckNum(string input, out int output)
     {
 
-        byte output1; //доп.переменная 
-        bool nCorrect = byte.TryParse(input, out output1);
+        int output1; //доп.переменная 
+        bool nCorrect = int.TryParse(input, out output1);
         if (nCorrect == true & output1 > 0)
         {  
             output = output1;
