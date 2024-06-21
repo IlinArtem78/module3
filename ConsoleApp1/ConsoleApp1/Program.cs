@@ -12,8 +12,8 @@ class MainClass
    
         public static void Main(string[] args)
         {
-    //    (string F_Name, string S_Name, int Age, string HavePit, int PitKol) Name;
-        Anketa();
+    
+          Anketa();
 
         }
 
