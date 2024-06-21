@@ -51,12 +51,13 @@ class Program
         Human human = new Human();//вызов класса (конструктор)
         Human human1 = new Human("Артем");
         Human human2 = new Human("Артем", 29);
+        human.Greetings();
+        human1.Greetings(); 
+        human2.Greetings();
        
         ExternalClass.ClassInternalClass newClass;
         ExternalStruct.StructInternalStruct newStruct;
-        Console.WriteLine(human); 
-        Console.WriteLine(human1);
-        Console.WriteLine(human2);
+     
     }
    
 
@@ -81,5 +82,23 @@ class ExternalStruct
 
     public struct StructInternalStruct
     {
+    }
+}
+
+class Pen
+{
+    public string color;
+    public int cost;
+
+    public Pen()
+    {
+        color = "Черный";
+        cost = 100; 
+    }
+
+    public Pen(string penColor, int penCost)
+    {
+        color = penColor;
+        cost = penCost;
     }
 }
