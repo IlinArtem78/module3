@@ -54,7 +54,8 @@ class Program
         human.Greetings();
         human1.Greetings(); 
         human2.Greetings();
-       
+        Animal animal = new Animal() { type = "Собака", name = "Вольт", age = 4 };
+
         ExternalClass.ClassInternalClass newClass;
         ExternalStruct.StructInternalStruct newStruct;
      
@@ -101,4 +102,18 @@ class Pen
         color = penColor;
         cost = penCost;
     }
+}
+
+
+class Rectangle
+{
+    public int a;
+    public int b;
+    public int Square()
+    {
+        int c = a * b; 
+        return c; 
+    }
+
+
 }
