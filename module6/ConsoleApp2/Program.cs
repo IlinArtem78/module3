@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+namespace module6
+{ 
 class Human
 {
     // Поля класса
@@ -114,6 +117,49 @@ class Rectangle
         int c = a * b; 
         return c; 
     }
+    //конструктор 1. 
+   public Rectangle(int x, int y)
+    {
+        a = x; 
+        b = y;
+        
+    }
+    public Rectangle(int x)
+    {
+        a = x;
+        b = x;
+
+    }
+    public Rectangle()
+    {
+        a = 6;
+        b = 4;
+
+    }
+
+
+
+
+
+}
+
+
+class Obj
+{
+    public string Name;
+    public bool IsAlive;
+    public int Weight; 
+}
+
+struct DATA
+    {
+        public string Name;
+        public int Lenth;
+        public int Version;
+        public int[] Arr; 
+
+    }
+
 
 
 }
