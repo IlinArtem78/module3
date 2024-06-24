@@ -1,0 +1,285 @@
+ //  Human human = new Human();//вызов класса (конструктор)
+       // Human human1 = new Human("Артем");
+      //  Human human2 = new Human("Артем", 29);
+       // human.Greetings();
+      //  human1.Greetings(); 
+      //  human2.Greetings();
+        Animal animal = new Animal() { type = "Собака", name = "Вольт", age = 4 };
+
+        ExternalClass.ClassInternalClass newClass;
+        ExternalStruct.StructInternalStruct newStruct;
+
+            Human human = null;
+
+            /*   if (human != null)
+              {
+                  Console.WriteLine(human.age);
+              }
+
+             Employee employee = new Employee();  //проверка на null классов ссылочного типа. (вариант с if) 
+              string name;
+
+              if (employee != null && employee.Department != null && employee.Department.Company != null)
+              {
+                  name = employee.Department.Company.Name;
+              }
+
+              string name1 = employee?.Department?.Company?.Name;  //проверка на null классов ссылочного типа. (вариант с использованием null-оператора) 
+
+
+
+              object first = null;
+              object second = first ?? 100; // оператор null-объединения, или оператор ??.
+                                            //Данный оператор возвращает левый операнд, если этот операнд не равен null, иначе — правый. При этом левый операнд должен принимать null. */
+
+                                            class Human
+{
+    // Поля класса
+    public string name;
+    public int age;
+
+    // Метод класса
+    public void Greetings()
+    {
+        Console.WriteLine("Меня зовут {0}, мне {1}", name, age);
+    }
+    // Конструктор 1
+    public Human()
+    {
+        name = "Неизвестно";
+        age = 20;
+    }
+    // Конструктор 2
+    public Human(string n)
+    {
+        name = n;
+        age = 20;
+    }
+    // Конструктор 3
+    public Human(string n, int a)
+    {
+        name = n;
+        age = a;
+    }
+}
+
+struct Animal
+{
+    // Поля структуры
+    public string type;
+    public string name;
+    public int age;
+
+    // Метод структуры
+    public void Info()
+    {
+        Console.WriteLine("Это {0} по кличке {1}, ему {2}", type, name, age);
+    }
+}
+
+
+
+class ExternalClass
+{
+    public class ClassInternalClass
+    {
+    }
+
+    struct ClassInternalStruct // невозможно сослаться так как объект не public. 
+    {
+    }
+}
+
+class ExternalStruct
+{
+    class StructInternalClass // невозможно сослаться так как объект не public. 
+    {
+    }
+
+    public struct StructInternalStruct
+    {
+    }
+}
+
+class Pen
+{
+    public string color;
+    public int cost;
+
+    public Pen()
+    {
+        color = "Черный";
+        cost = 100; 
+    }
+
+    public Pen(string penColor, int penCost)
+    {
+        color = penColor;
+        cost = penCost;
+    }
+}
+
+
+class Rectangle
+{
+    public int a;
+    public int b;
+    public int Square()
+    {
+        int c = a * b; 
+        return c; 
+    }
+    //конструктор 1. 
+   public Rectangle(int x, int y)
+    {
+        a = x; 
+        b = y;
+        
+    }
+    public Rectangle(int x)
+    {
+        a = x;
+        b = x;
+
+    }
+    public Rectangle()
+    {
+        a = 6;
+        b = 4;
+
+    }
+
+
+
+
+
+}
+
+
+class Obj
+{
+    public string Name;
+    public bool IsAlive;
+    public int Weight; 
+}
+
+struct DATA
+    {
+        public string Name;
+        public int Lenth;
+        public int Version;
+        public int[] Arr; 
+
+    }
+
+
+     //  var department = new Department();
+           // department.NDepartment();
+         // department.City = null; 
+        // department.City.Name = "Санкт-Петербург"; 
+
+
+
+
+         //  Console.WriteLine(department.City.Name);
+            /*    if (department != null && department.City.Name != null && department.City.Name != null && department.Company.Type == "Банк" && department.City.Name == "Санкт-Петербург")
+                {
+                    Console.WriteLine("У банка {0} есть отделения в Санкт-Петербурге", department.Company.Name);
+
+                }
+                else if (department.Company == null)
+                {
+                    Console.WriteLine("Неизвестная компания");
+                }
+
+
+
+
+
+             /*  if (department?.Company?.Type == "Банк" && department?.City?.Name == "Санкт-Петербург")
+                    {
+                        Console.WriteLine("У банка {0} есть отделение в Санкт-Петербурге", department?.Company?.Name ?? "Неизвестная компания");
+                    }
+
+              }
+              /*   static Department GetCurrentDepartment()
+                   {
+
+
+
+
+                   }*/
+                       class Company
+    {
+        public string Type;
+        public string Name;
+
+        
+        public void SetNameCompany()
+        {
+            Console.WriteLine("Введите название компании");
+            var nameFirma = Console.ReadLine();
+
+            Name = nameFirma;
+            Console.WriteLine("Введите тип компании");
+            var typeFirma = Console.ReadLine();
+            Type = typeFirma;
+        }
+
+    }
+
+    class Department
+    {
+
+        
+        public City City;
+        public Company Company;
+       public void NDepartment()
+        {
+            Company NC = new Company();
+            NC.SetNameCompany(); 
+            City N_C = new City();
+            N_C.SetNameCity();
+        }
+
+        
+            
+        
+
+    }
+
+    class City
+    {
+        public string Name;
+
+
+        public void SetNameCity()
+        {
+            Console.WriteLine("Введите название города");
+            var nameGorod = Console.ReadLine();
+            Name = nameGorod;
+
+
+        }
+
+
+    }
+
+      class Bus
+    {
+        public int? Load;  // Использование .VALUE и .HASVALUE
+
+        public void PrintStatus()
+        {
+            if (Load.HasValue && Load > 0 )
+            {
+                 
+
+                Console.WriteLine("В авбтобусе {0} пассажиров", Load.Value);
+            }
+            else
+            {
+                Console.WriteLine("Автобус пуст"); 
+            }
+        }
+    }

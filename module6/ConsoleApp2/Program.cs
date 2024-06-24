@@ -1,165 +1,85 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
+
 namespace module6
-{ 
-class Human
 {
-    // Поля класса
-    public string name;
-    public int age;
+    //Для класса Bus реализуйте метод PrintStatus, который будет сообщать о количестве пассажиров в автобусе, если они есть. Или сообщать, что автобус пуст.
 
-    // Метод класса
-    public void Greetings()
+    class Program
     {
-        Console.WriteLine("Меня зовут {0}, мне {1}", name, age);
-    }
-    // Конструктор 1
-    public Human()
-    {
-        name = "Неизвестно";
-        age = 20;
-    }
-    // Конструктор 2
-    public Human(string n)
-    {
-        name = n;
-        age = 20;
-    }
-    // Конструктор 3
-    public Human(string n, int a)
-    {
-        name = n;
-        age = a;
-    }
-}
-
-struct Animal
-{
-    // Поля структуры
-    public string type;
-    public string name;
-    public int age;
-
-    // Метод структуры
-    public void Info()
-    {
-        Console.WriteLine("Это {0} по кличке {1}, ему {2}", type, name, age);
-    }
-}
-
-class Program
-{
-    public static void Main(string[] args)
-    {
-        Human human = new Human();//вызов класса (конструктор)
-        Human human1 = new Human("Артем");
-        Human human2 = new Human("Артем", 29);
-        human.Greetings();
-        human1.Greetings(); 
-        human2.Greetings();
-        Animal animal = new Animal() { type = "Собака", name = "Вольт", age = 4 };
-
-        ExternalClass.ClassInternalClass newClass;
-        ExternalStruct.StructInternalStruct newStruct;
-     
-    }
-   
+        public static void Main(string[] args)
+        {
+            int i = 123;
+            // Упаковка значения i в объект o
+            object o = i;
+            // Распаковка o
+            int j = (int)o;
 
 
-}
-class ExternalClass
-{
-    public class ClassInternalClass
-    {
+
+            Console.WriteLine(o);
+
+
+        }
     }
 
-    struct ClassInternalStruct // невозможно сослаться так как объект не public. 
+  class Treug
     {
-    }
-}
+        public static int a, b, c;
 
-class ExternalStruct
-{
-    class StructInternalClass // невозможно сослаться так как объект не public. 
-    {
-    }
-
-    public struct StructInternalStruct
-    {
-    }
-}
-
-class Pen
-{
-    public string color;
-    public int cost;
-
-    public Pen()
-    {
-        color = "Черный";
-        cost = 100; 
-    }
-
-    public Pen(string penColor, int penCost)
-    {
-        color = penColor;
-        cost = penCost;
-    }
-}
+        static int P_Treug()
+        {
+            var P = a + b + c; 
+            return P;
+        }
 
 
-class Rectangle
-{
-    public int a;
-    public int b;
-    public int Square()
-    {
-        int c = a * b; 
-        return c; 
-    }
-    //конструктор 1. 
-   public Rectangle(int x, int y)
-    {
-        a = x; 
-        b = y;
-        
-    }
-    public Rectangle(int x)
-    {
-        a = x;
-        b = x;
+
+        static double S_Treug()
+        {
+
+            var p = Treug.P_Treug()/2;
+            var S = Math.Sqrt(p * (p - a) * (p - b) * (p - c));  
+            return S;
+        }
+
 
     }
-    public Rectangle()
+    class Krug()
     {
-        a = 6;
-        b = 4;
+        public static int r;
+        static double S_Kruga()
+        {
+            var S = Math.PI * r*r;
+            return S;
+        }
 
+        static double L_Kruga()
+        {
+            var L = 2*Math.PI * r;
+            return L;
+
+        }
     }
 
-
-
-
-
-}
-
-
-class Obj
-{
-    public string Name;
-    public bool IsAlive;
-    public int Weight; 
-}
-
-struct DATA
+    class Kvadrat()
     {
-        public string Name;
-        public int Lenth;
-        public int Version;
-        public int[] Arr; 
+        public static int a;
+        static double S_Kvadrat()
+        {
+            var S = a * a;
+            return S;
+        }
+        static double P_Kvadrata()
+        {
+            var P = 4 * a;
+            return P;
+        }
+
+
 
     }
-
-
 
 }
