@@ -283,3 +283,87 @@ struct DATA
             }
         }
     }
+     class Treug
+    {
+        public static int a, b, c;
+
+        static int P_Treug()
+        {
+            var P = a + b + c; 
+            return P;
+        }
+
+
+
+        static double S_Treug()
+        {
+
+            var p = Treug.P_Treug()/2;
+            var S = Math.Sqrt(p * (p - a) * (p - b) * (p - c));  
+            return S;
+        }
+
+
+    }
+    class Krug()
+    {
+        public static int r;
+        static double S_Kruga()
+        {
+            var S = Math.PI * r*r;
+            return S;
+        }
+
+        static double L_Kruga()
+        {
+            var L = 2*Math.PI * r;
+            return L;
+
+        }
+    }
+
+    class Kvadrat()
+    {
+        public static int a;
+        static double S_Kvadrat()
+        {
+            var S = a * a;
+            return S;
+        }
+        static double P_Kvadrata()
+        {
+            var P = 4 * a;
+            return P;
+        }
+
+
+
+    }
+      int i = 123;
+            // Упаковка значения i в объект o
+            object o = i;
+            // Распаковка o
+            int j = (int)o;
+
+
+
+            Console.WriteLine(o);
+
+            /////////////////////////////////
+ class TrafficLight
+
+{
+    
+    private void ChangeColor(string  color)
+    {
+
+    }
+    public string GetColor() {
+        string st;
+        st = Console.ReadLine();
+        return st; 
+    
+    }
+
+
+}

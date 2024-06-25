@@ -1,7 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
+global using Base;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Xml.Linq;
+
 
 namespace module6
 {
@@ -11,75 +13,82 @@ namespace module6
     {
         public static void Main(string[] args)
         {
-            int i = 123;
-            // Упаковка значения i в объект o
-            object o = i;
-            // Распаковка o
-            int j = (int)o;
+          //Car car = new Car();
 
-
-
-            Console.WriteLine(o);
+            Company microsoft = new("Microsoft");
+            Person tom = new("Tom", microsoft);
+            tom.Print();
+            // Console.WriteLine();
 
 
         }
     }
 
-  class Treug
-    {
-        public static int a, b, c;
-
-        static int P_Treug()
-        {
-            var P = a + b + c; 
-            return P;
-        }
-
-
-
-        static double S_Treug()
-        {
-
-            var p = Treug.P_Treug()/2;
-            var S = Math.Sqrt(p * (p - a) * (p - b) * (p - c));  
-            return S;
-        }
-
-
-    }
-    class Krug()
-    {
-        public static int r;
-        static double S_Kruga()
-        {
-            var S = Math.PI * r*r;
-            return S;
-        }
-
-        static double L_Kruga()
-        {
-            var L = 2*Math.PI * r;
-            return L;
-
-        }
-    }
-
-    class Kvadrat()
-    {
-        public static int a;
-        static double S_Kvadrat()
-        {
-            var S = a * a;
-            return S;
-        }
-        static double P_Kvadrata()
-        {
-            var P = 4 * a;
-            return P;
-        }
-
-
-
-    }
+ 
 
 }
+enum TurnDirection
+{
+    None = 0,
+    Left,
+    Right
+}
+
+class Car
+{
+    private double Fuel;
+
+    private int Mileage;
+
+    private string color;
+
+    private TurnDirection turn;
+
+    public Car()
+    {
+        Fuel = 50;
+        Mileage = 0;
+        color = "White";
+    }
+
+    private void Move()
+    {
+        // Move a kilometer
+        Mileage++;
+        Fuel -= 0.5;
+    }
+
+    private void Turn(TurnDirection direction)
+    {
+        turn = direction;
+    }
+
+    public void FillTheCar()
+    {
+        Fuel = 50;
+    }
+
+    public string GetColor()
+    {
+        return color;
+    }
+
+    public void ChangeColor(string newColor)
+    {
+        if (color != newColor)
+            color = newColor;
+    }
+
+    public bool IsTurningLeft()
+    {
+        return turn == TurnDirection.Left;
+    }
+
+    public bool IsTurningRight()
+    {
+        return turn == TurnDirection.Right;
+    }
+}
+
+
+
