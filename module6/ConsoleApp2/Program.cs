@@ -16,11 +16,10 @@ namespace module6
         public static void Main(string[] args)
         {
 
-            /* BaseClass baseClass = new BaseClass();
-             baseClass.Display();
+             
              DerivedClass derivedClass = new DerivedClass();
              derivedClass.Display(); 
-          */
+          
 
 
             Console.ReadKey();
@@ -36,40 +35,26 @@ namespace module6
 
     class BaseClass
     {
-        public virtual int Counter
+        public virtual void Display()
         {
-            get;
-            set;
+            Console.WriteLine("Метод класса BaseClass");
         }
     }
 
     class DerivedClass : BaseClass
     {
-        public override int Counter
+        public override void Display()
         {
-            get
-            {
-                return Counter;
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    Console.WriteLine("Число должно быть больше 0");
-                }
-                else
-                {
-                    Counter = value;
-                }
-            }
+            base.Display();
+            Console.WriteLine("Метод класса DerivedClass");
         }
-
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
 }
