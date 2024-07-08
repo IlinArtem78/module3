@@ -2,6 +2,8 @@
 global using Base;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
+using System.Net.Security;
+using System.Runtime.InteropServices.Marshalling;
 using System.Xml.Linq;
 
 
@@ -13,12 +15,15 @@ namespace module6
     {
         public static void Main(string[] args)
         {
-          //Car car = new Car();
+         
+            BaseClass baseClass = new BaseClass();
+            baseClass.Display();
+            DerivedClass derivedClass = new DerivedClass();
+            derivedClass.Display(); 
+         
 
-            Company microsoft = new("Microsoft");
-            Person tom = new("Tom", microsoft);
-            tom.Print();
-            // Console.WriteLine();
+
+            Console.ReadKey(); 
 
 
         }
@@ -26,69 +31,30 @@ namespace module6
 
  
 
+
+
+
+
+
+
+   
+
+    
+
+    class BaseClass
+    {
+        public virtual void Display()
+        {
+            Console.WriteLine("Метод класса BaseClass");
+        }
+    }
+
+    class DerivedClass : BaseClass
+    {
+        public override void Display()
+        {
+            Console.WriteLine("Метод класса DerivedClass");
+        }
+    }
+
 }
-enum TurnDirection
-{
-    None = 0,
-    Left,
-    Right
-}
-
-class Car
-{
-    private double Fuel;
-
-    private int Mileage;
-
-    private string color;
-
-    private TurnDirection turn;
-
-    public Car()
-    {
-        Fuel = 50;
-        Mileage = 0;
-        color = "White";
-    }
-
-    private void Move()
-    {
-        // Move a kilometer
-        Mileage++;
-        Fuel -= 0.5;
-    }
-
-    private void Turn(TurnDirection direction)
-    {
-        turn = direction;
-    }
-
-    public void FillTheCar()
-    {
-        Fuel = 50;
-    }
-
-    public string GetColor()
-    {
-        return color;
-    }
-
-    public void ChangeColor(string newColor)
-    {
-        if (color != newColor)
-            color = newColor;
-    }
-
-    public bool IsTurningLeft()
-    {
-        return turn == TurnDirection.Left;
-    }
-
-    public bool IsTurningRight()
-    {
-        return turn == TurnDirection.Right;
-    }
-}
-
-
-
