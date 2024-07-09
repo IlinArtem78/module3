@@ -15,11 +15,11 @@ namespace module6
     {
         public static void Main(string[] args)
         {
+            Obj a = new Obj();
+            Obj b = new Obj();
+            Obj c = a + b;
+            Obj d = a - b;
 
-             
-             DerivedClass derivedClass = new DerivedClass();
-             derivedClass.Display(); 
-          
 
 
             Console.ReadKey();
@@ -29,32 +29,96 @@ namespace module6
     }
 
 
+    /*
+    Создайте схему классов A, B, C, D и E таким образом, чтобы B наследовался от A, С от A, D от B и E от C. А также:
+
+Добавьте в класс A виртуальный метод Display (void тип, без параметров), который будет выводить в консоль "A".
+В классе B скройте этот метод и сделайте так, чтобы в консоль выводилось "B".
+Для класса C переопределите метод Display, чтобы в консоли было "C".
+Для D снова скройте метод.
+В классе E также скройте метод.
 
 
 
-
-    class BaseClass
+*/
+    class A
     {
         public virtual void Display()
         {
-            Console.WriteLine("Метод класса BaseClass");
+            Console.WriteLine("A");
         }
     }
-
-    class DerivedClass : BaseClass
+    class B : A
+    {
+        public new void Display()
+        {
+            Console.WriteLine("B");
+        }
+    }
+    class C : A
     {
         public override void Display()
         {
-            base.Display();
-            Console.WriteLine("Метод класса DerivedClass");
+            Console.WriteLine("C");
         }
     }
 
+    class D : B
+    {
+        public new void Display()
+        {
+            Console.WriteLine("D");
+        }
+    }
+
+    class E : C
+    {
+        public new void Display()
+        {
+            Console.WriteLine("E");
+        }
+    }
+
+    /*
+    Для класса Obj перегрузите операторы + и -, чтобы результатом работы оператора был новый экземпляр класса Obj, а операции производились над полем Value.
+
+
+    */
+    class Obj
+    {
+        public int Value;
+
+        public static Obj operator +(Obj a, Obj b)
+        {
+            return new Obj
+            {
+                Value = a.Value + b.Value
+            };
+        }
+        public static Obj operator -(Obj a, Obj b)
+        {
+            return new Obj
+            {
+                Value = a.Value - b.Value
+            };
+        }
+
+        class Vector //образец класса в котором перезагружается операторы x,y
+        {
+            public int X;
+            public int Y;
+            public static Vector operator +(Vector a, Vector b)
+            {
+                return new Vector
+                {
+                    X = a.X + b.X,
+                    Y = a.Y + b.Y
+                };
+            }
+        }
 
 
 
 
-
-
-
+    }
 }
