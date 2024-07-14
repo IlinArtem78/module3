@@ -1,10 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 global using Base;
+using ConsoleApp2;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Net.Security;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
+using System.Transactions;
 using System.Xml.Linq;
+using ConsoleApp2;
 
 
 namespace module6
@@ -15,15 +19,22 @@ namespace module6
     {
         public static void Main(string[] args)
         {
-            int num1 = 3;
-            int num2 = 58;
 
-            Helper.Swap(ref num1, ref num2);
-            /*передача num1 и num2 в метод*/
-            
 
-            Console.WriteLine(num1); //58
-            Console.WriteLine(num2); //3  
+            DateTime currentDate = DateTime.Now;
+            currentDate.Print();
+
+            int num1 = 7;
+            int num2 = -13;
+            int num3 = 0;
+
+            Console.WriteLine(num1.GetNegative()); //-7
+            Console.WriteLine(num1.GetPositive()); //7
+            Console.WriteLine(num2.GetNegative()); //-13
+            Console.WriteLine(num2.GetPositive()); //13
+            Console.WriteLine(num3.GetNegative()); //0
+            Console.WriteLine(num3.GetPositive()); //0
+
 
 
             Console.ReadKey();
@@ -32,51 +43,24 @@ namespace module6
         }
     }
 
-    /*
-    Создайте классы для следующих объектов компьютера: процессор (Processor), материнская карта (MotherBoard), видеокарта (GraphicCard). Унаследуйте их от класса ComputerPart.
+    //Измените класс Obj так, чтобы статические поля инициализировались в статическом конструкторе:
 
-    Добавьте в класс ComputerPart абстрактный метод Work без параметров и с типом void.
-
-
-
-    */
-    abstract class ComputerPart
+    class Obj
     {
+        public string Name;
+        public string Description;
 
-        public abstract void Work();
-        
-    }
+        public static string Parent;
+        public static int DaysInWeek;
+        public static int MaxValue;
 
-    class Processor : ComputerPart
-    {
-        public override void Work()
+        static Obj()
         {
-
+            DaysInWeek = 7;
+            MaxValue = 2000;
+            Parent = "System.Object";
         }
     }
 
-    class MotherBoard : ComputerPart
-    { public override void Work() { } }
 
-
-    class GraphicCard : ComputerPart { public override void Work() { } }
-
-
-    /*
-    Создайте класс Helper и определите в нем статический метод Swap типа void, который принимает 2 переменные типа int и меняет их значения местами.
-
-    Иными словами, для вашего метода должен будет корректно выполняться следующий код:
-    */
-
-
-    class Helper
-    {
-       
-        public static void Swap(ref int a, ref int b)
-        {
-            int num = a; //3
-            a = b;
-            b = num;
-        }
-    }
 }
