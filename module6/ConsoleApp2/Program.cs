@@ -62,5 +62,33 @@ namespace module6
         }
     }
 
+    //Создайте класс-обобщение Car для автомобиля. Универсальным параметром будет тип двигателя в автомобиле (электрический и бензиновый).
+    //Для типов двигателей также создайте классы — ElectricEngine и GasEngine.
+   // В классе Car создайте поле Engine в качестве типа которому укажите универсальный параметр.
+
+    class car <T>
+    {
+        public T Engine ; 
+
+     
+
+    }
+    class ElectricEngine
+    {
+
+    }
+
+    class GasEngine
+    {
+
+    }
+
+    class Record <T1, T2>
+    {
+        public T1 Id;
+        public T2 Value;
+        public DateTime Date; 
+    }
+
 
 }
