@@ -66,12 +66,12 @@ namespace module6
     //Для типов двигателей также создайте классы — ElectricEngine и GasEngine.
    // В классе Car создайте поле Engine в качестве типа которому укажите универсальный параметр.
 
-    class car <T1> where T1 : Engine
+    class car <TEngine> where TEngine : Engine
                        
     {
-        public T1 Engine ; 
+        public TEngine Engine ; 
 
-        public virtual void changePart <T2> (T2 newPart) where T2 : CarPart
+        public virtual void changePart <TPart> (TPart newPart) where TPart : CarPart
         {
             
         }
