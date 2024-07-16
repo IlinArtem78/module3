@@ -17,6 +17,6 @@ class Person
     public void Print()
     {
         Console.WriteLine($"Имя: {name}");
-        company.Print();
+      //  company.Print();
     }
 }

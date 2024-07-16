@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.Marshalling;
 using System.Transactions;
 using System.Xml.Linq;
 using ConsoleApp2;
+using HWmodule7; 
 
 
 namespace module6
@@ -19,116 +20,35 @@ namespace module6
     {
         public static void Main(string[] args)
         {
+            Product<HomeDelivery> product = new Product<HomeDelivery>();
+            product.DescProduct = "Игровая приставка";
+            product.Description = "Почтовое отправление";
+            if (product.Delivery != null)
+            {
+
+                if (product.Delivery.IsDelivery != true)
+                {
+                    Console.WriteLine("Выберите другой способ доставки не курьером");
+                }
+                product.Delivery.IsDelivery = true;
+                
+                
+            }
+
+            Console.WriteLine("Введите адресс вашего дома:");
+            product.Delivery.Address = Console.ReadLine();
 
 
-            DateTime currentDate = DateTime.Now;
-            currentDate.Print();
+            Console.WriteLine("Адресс вашего дома {0}", product.Delivery.Address);
+           // product.Result();
+           // product.DisplayAddress();
 
-            int num1 = 7;
-            int num2 = -13;
-            int num3 = 0;
-
-            Console.WriteLine(num1.GetNegative()); //-7
-            Console.WriteLine(num1.GetPositive()); //7
-            Console.WriteLine(num2.GetNegative()); //-13
-            Console.WriteLine(num2.GetPositive()); //13
-            Console.WriteLine(num3.GetNegative()); //0
-            Console.WriteLine(num3.GetPositive()); //0
-
-
-
-            Console.ReadKey();
 
 
         }
     }
 
-    //Измените класс Obj так, чтобы статические поля инициализировались в статическом конструкторе:
-
-    class Obj
-    {
-        public string Name;
-        public string Description;
-
-        public static string Parent;
-        public static int DaysInWeek;
-        public static int MaxValue;
-
-        static Obj()
-        {
-            DaysInWeek = 7;
-            MaxValue = 2000;
-            Parent = "System.Object";
-        }
-    }
-
-    //Создайте класс-обобщение Car для автомобиля. Универсальным параметром будет тип двигателя в автомобиле (электрический и бензиновый).
-    //Для типов двигателей также создайте классы — ElectricEngine и GasEngine.
-   // В классе Car создайте поле Engine в качестве типа которому укажите универсальный параметр.
-
-    class car <TEngine> where TEngine : Engine
-                       
-    {
-        public TEngine Engine ; 
-
-        public virtual void changePart <TPart> (TPart newPart) where TPart : CarPart
-        {
-            
-        }
-
-    }
-
-    abstract class Engine
-    {
-
-    }
-    class ElectricEngine : Engine
-    {
-
-    }
-
-    class GasEngine : Engine    
-    {
-
-    }
-
-    abstract class CarPart
-    {
-
-    }
-
-    class Battery : CarPart
-    {
-
-    }
-
-    class Differential : CarPart
-    {
-
-    }
-
-    class Wheel : CarPart
-    {
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-    class Record <T1, T2>
-    {
-        public T1 Id;
-        public T2 Value;
-        public DateTime Date; 
-    }
-
+   
 
 
 
