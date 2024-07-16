@@ -8,8 +8,8 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 using System.Transactions;
 using System.Xml.Linq;
-using ConsoleApp2;
-using HWmodule7; 
+using HWmodule7;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace module6
@@ -20,36 +20,51 @@ namespace module6
     {
         public static void Main(string[] args)
         {
-            Product<HomeDelivery> product = new Product<HomeDelivery>();
-            product.DescProduct = "Игровая приставка";
-            product.Description = "Почтовое отправление";
-            if (product.Delivery != null)
-            {
-
-                if (product.Delivery.IsDelivery != true)
-                {
-                    Console.WriteLine("Выберите другой способ доставки не курьером");
-                }
-                product.Delivery.IsDelivery = true;
-                
-                
-            }
-
-            Console.WriteLine("Введите адресс вашего дома:");
-            product.Delivery.Address = Console.ReadLine();
-
-
-            Console.WriteLine("Адресс вашего дома {0}", product.Delivery.Address);
-           // product.Result();
-           // product.DisplayAddress();
-
-
+            byte st = Work();
 
         }
+        
+
+        public static byte Work()
+        {
+            Console.WriteLine("Выбирите способо доставки товара 0 - курьер, 1 - пункт выдачи, 2 - магазин");
+            byte inNum = byte.Parse(Console.ReadLine());
+            switch (inNum)
+            {
+                case 0:
+                    Product<HomeDelivery> product = new Product<HomeDelivery>();
+                    product.DescProduct = "Игровая приставка";
+                    product.Description = "Почтовое отправление";
+                    product.Delivery = new HomeDelivery();    //объевление класса. Инциализация.
+                    product.Number = 128745;
+                    product.Delivery.IsDelivery = true; // доставка осуществляется курьером. 
+                    Console.WriteLine("Введите адресс вашего дома:");
+                    product.Delivery.Address = Console.ReadLine();
+                    Console.WriteLine("Ваш адресс доставки {0}", product.Delivery.Address);
+                    return inNum;
+                    break;
+                case 1:
+                    Product<PickPointDelivery> Punkt = new Product<PickPointDelivery>();
+                    Punkt.Number = 128745;
+                    Punkt.Delivery = new PickPointDelivery();
+                    Punkt.Delivery.PickPoint();
+                    return inNum;
+                    break;
+                case 2:
+                    Product<ShopDelivery> shop = new Product<ShopDelivery>();   
+                    shop.Delivery = new ShopDelivery(); 
+                    return inNum;   
+                    break;
+
+                default:
+                    Console.WriteLine("Вы ввели невернное число {0}", inNum);
+                    return Work();
+                    break;
+            }
+        }
+
+
     }
-
-   
-
 
 
 }

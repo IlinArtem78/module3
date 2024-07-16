@@ -35,7 +35,7 @@ namespace HWmodule7
 {
     abstract class Delivery 
     {
-        public string Address; 
+        public string? Address; 
     }
     class HomeDelivery : Delivery
     {
@@ -47,7 +47,7 @@ namespace HWmodule7
                 return Coureier;
             }
             set {
-            if  (value = true)
+            if  (value == true)
                 {
                     Console.WriteLine("Курьер свободен доставка будет на дом");
                 }
@@ -55,7 +55,7 @@ namespace HWmodule7
             }
       
         }
-  //      public HomeDelivery()
+    //   public HomeDelivery()
     //    {
     //        Address = Console.ReadLine();
      //   }
@@ -68,18 +68,20 @@ namespace HWmodule7
         Company company1 = new Company() ;
         New_Company company2 = new New_Company();
         DateTime now = DateTime.Now; 
-        public void PickPoint()
+        public void PickPoint()  //функция обработки компании. 
         {
             Console.WriteLine("Время похода за посылкой {0}", now.AddMinutes(40));
+            Console.WriteLine("Введите адресс пункта выдачи компании 1");
             company1.Adrress = Console.ReadLine(); //Адресс пункта выдачи вводит пользователь 
+            Console.WriteLine("Введите адресс пункта выдачи компании 2"); 
             company2.Adrress = Console.ReadLine(); // Адресс пункта выдачи вводит пользователь
             if (company1.NCompany(Address, now.AddMinutes(40)))
             {
-                Console.WriteLine("Выбираем пункт выдачи компании 1");
+                Console.WriteLine("Выбираем пункт выдачи компании 1, так как загрузка в пункте выдачи 2 выше");
             }
             else 
             {
-                Console.WriteLine("Выбираем пункт выдачи компании 2"); 
+                Console.WriteLine("Выбираем пункт выдачи компании 2, так как загрузка в пункте выдачи 1 выше"); 
             }
 
         } 
@@ -89,12 +91,15 @@ namespace HWmodule7
 
     class ShopDelivery : Delivery
     {
-        /* ... */
+       public ShopDelivery()
+        {
+            Console.WriteLine("Адресс магазина ул. Алекссевская д.18");
+        }
     }
 
     class Order<TDelivery> where TDelivery : Delivery  //класс заказа
     {
-        public TDelivery Delivery { get; set; }
+        public TDelivery Delivery;
   
         public int Number; 
 
@@ -113,23 +118,32 @@ namespace HWmodule7
     class Product<TDelivery> : Order<TDelivery> where TDelivery : Delivery
     {
 
-        public string DescProduct; //Описание продукта
-        public TDelivery Delivery; 
-        
+        public string? DescProduct; //Описание продукта
+        public TDelivery Delivery {get; set;}
+
+
+
+
+
         public void Result()
+        {
+            Result(DescProduct);
+        }
+
+        public void Result(string? descProduct)
         {
             
          Order<HomeDelivery> HomeOrder = new Order<HomeDelivery>();  
             
-          HomeOrder.Description = DescProduct;
+          HomeOrder.Description = descProduct;
           HomeOrder.Number = Number;
           
           Order<PickPointDelivery> order = new Order<PickPointDelivery>();
           order.Number = Number;
-          order.Description = DescProduct;  
+          order.Description = descProduct;  
           
           Order<ShopDelivery> ShopOrder = new Order<ShopDelivery>();
-          ShopOrder.Description = DescProduct;
+          ShopOrder.Description = descProduct;
             ShopOrder.Number = Number;  
             
            
@@ -165,6 +179,7 @@ namespace HWmodule7
         public virtual bool NCompany(string Adrress, DateTime now) 
         {
             Adrress = Adrress; 
+            
             if (now > h_start && now < h_end && load.load == 50) {
 
                 return true;
@@ -198,9 +213,10 @@ namespace HWmodule7
         public int load; 
         public PunktLoad(int load)
         {
-            Console.WriteLine("Загрузка пункта выдачи");
+        
+          //  Console.WriteLine("Загрузка пункта выдачи");
             this.load = load;
-
+         
         }
         
 
