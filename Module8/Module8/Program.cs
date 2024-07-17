@@ -1,42 +1,71 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.IO;
+
 namespace module8
 {
     class Program
     {
         // Допустим, нам нужно создать файл и записать в него информацию, в коде выполним следующие действия: 
 
-       // Проверим существование файла
+        // Проверим существование файла
         ///Если не существует, создадим его и запишем строку.
         //Откроем файл и прочитаем ранее записанную строку.
         static void Main(string[] args)
         {
-            string filePath = @"C:\Users\User\source\repos\module3\Module8\Module8\Program.cs"; // Укажем путь  C:\Users\User\source\repos\module3\Module8\Module8\Program.cs
-            if (!File.Exists(filePath)) // Проверим, существует ли файл по данному пути
+            string tempFile = @"C:\Users\User\source\repos\module3\Module8\Module8\Program.cs"; //Path.GetTempFileName(); // используем генерацию имени файла.
+            var fileInfo = new FileInfo(tempFile); // Создаем объект класса FileInfo.
+            DateTime dateTime = DateTime.Now;
+           
+
+            //Открываем файл и читаем из него.
+           
+            Console.WriteLine(); 
+            /*
+            Сделайте так, чтобы ваша программа из задания 8.3.1 при каждом запуске добавляла в свой исходный код комментарий о времени последнего запуска. 
+            tring tempFile2 = Path.GetTempFileName();
+                var fileInfo2 = new FileInfo(tempFile2);
+
+                // Убедимся, что файл назначения точно отсутствует
+                fileInfo2.Delete();
+
+                // Копируем информацию
+                fileInfo.CopyTo(tempFile2);
+                Console.WriteLine($"{tempFile} скопирован в файл {tempFile2}.");
+                //Удаляем ранее созданный файл.
+                fileInfo.Delete();
+                Console.WriteLine($"{tempFile} удален.");
+            */
+
+            try
             {
-                //   Если не существует - создаём и записываем в строку
-                using (StreamWriter sw = File.CreateText(filePath))  // Конструкция Using (будет рассмотрена в последующих юнитах)
+                using (StreamWriter sr = fileInfo.AppendText())
                 {
-                    sw.WriteLine("Олег");
-                    sw.WriteLine("Дмитрий");
-                    sw.WriteLine("Иван");
+                    sr.WriteLine($"G: {dateTime:G}");
                 }
+                using (StreamReader sr = fileInfo.OpenText())
+                {
+                    string str = "";
+                    while ((str = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(str);
+                    }
+                }
+
+
+
             }
-            // Откроем файл и прочитаем его содержимое
-            using (StreamReader sr = File.OpenText(filePath))
+            catch (Exception e)
             {
-                string str = "";
-                while ((str = sr.ReadLine()) != null) // Пока не кончатся строки - считываем из файла по одной и выводим в консоль
-                {
-                    Console.WriteLine(str);
-                }
+                Console.WriteLine($"Ошибка: {e}");
             }
+
 
         }
-       
-
     }
 }
 
 
 
+
+G: 17.07.2024 13:26:27

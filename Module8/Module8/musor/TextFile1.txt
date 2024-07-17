@@ -123,3 +123,6 @@
             }
 
         }
+
+    /////     string filePath = @"C:\Users\User\source\repos\module3\Module8\Module8\Program.cs"; // Укажем путь  C:\Users\User\source\repos\module3\Module8\Module8\Program.cs
+         
