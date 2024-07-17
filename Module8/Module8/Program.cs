@@ -7,10 +7,10 @@ namespace module8
         static void Main(string[] args)
         {
 
-           // GetCatalogs();
+          //  GetCatalogs();
             KolVo();
             // получим системные диски
-            DriveInfo[] drives = DriveInfo.GetDrives();
+         /*   DriveInfo[] drives = DriveInfo.GetDrives();
 
             // Пробежимся по дискам и выведем их свойства
             foreach (DriveInfo drive in drives)
@@ -23,7 +23,7 @@ namespace module8
                     Console.WriteLine($"Свободно: {drive.TotalFreeSpace}");
                     Console.WriteLine($"Метка: {drive.VolumeLabel}");
                 }
-            }
+            }*/
         }
         static void GetCatalogs()
         {
@@ -63,20 +63,17 @@ namespace module8
         {
             try
             {
-                
-                DirectoryInfo dirInfo = new DirectoryInfo(@"C:\\");
-                
-                if (dirInfo.Exists)
-                {
-                    Console.WriteLine(dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
-                }
-                DirectoryInfo newDirectory = new DirectoryInfo(@"C:\\NewFolder");
-                if (!newDirectory.Exists)
-                    newDirectory.Create();
 
-                Console.WriteLine(dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
+                ///перемещения каталога
 
-               
+                DirectoryInfo newDirectory = new DirectoryInfo(@"C:\Users\User\Desktop\TestFolder");
+                
+                string newPath = @"C:\$RECYCLE.BIN\TestFolder";
+                
+                    newDirectory.MoveTo(newPath);
+                    Console.WriteLine("Выполнено перемещение в корзину");
+
+                
             }
             catch (Exception e)
             {
