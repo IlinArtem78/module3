@@ -7,7 +7,8 @@ namespace module8
         static void Main(string[] args)
         {
 
-            GetCatalogs();
+           // GetCatalogs();
+            KolVo();
             // получим системные диски
             DriveInfo[] drives = DriveInfo.GetDrives();
 
@@ -55,6 +56,32 @@ namespace module8
 
             }
 
+
+        }
+
+        static void KolVo()
+        {
+            try
+            {
+                
+                DirectoryInfo dirInfo = new DirectoryInfo(@"C:\\");
+                
+                if (dirInfo.Exists)
+                {
+                    Console.WriteLine(dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
+                }
+                DirectoryInfo newDirectory = new DirectoryInfo(@"C:\\NewFolder");
+                if (!newDirectory.Exists)
+                    newDirectory.Create();
+
+                Console.WriteLine(dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
+
+               
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
     }
