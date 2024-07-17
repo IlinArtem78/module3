@@ -1,0 +1,13 @@
+﻿public Folder(string name)
+   {
+       Name = name;
+   }
+  
+   string Name { get; set; }
+   List<string> Files { get; set; } = new List<string>();
+ 
+   void AddFile(string name)
+   {
+       if(!Files.Contains(name))
+           Files.Add(name);
+   }
