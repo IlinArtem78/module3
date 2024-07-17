@@ -12,9 +12,9 @@ using HWmodule7;
 using System.Security.Cryptography.X509Certificates;
 
 
-namespace module6
+namespace module7
 {
-    //Для класса Bus реализуйте метод PrintStatus, который будет сообщать о количестве пассажиров в автобусе, если они есть. Или сообщать, что автобус пуст.
+   
 
     class Program
     {
@@ -32,22 +32,22 @@ namespace module6
             switch (inNum)
             {
                 case 0:
-                    Product<HomeDelivery> product = new Product<HomeDelivery>();
-                    product.DescProduct = "Игровая приставка";
-                    product.Description = "Почтовое отправление";
-                    product.Delivery = new HomeDelivery();    //объевление класса. Инциализация.
-                    product.Number = 128745;
-                    product.Delivery.IsDelivery = true; // доставка осуществляется курьером. 
+                    Product<HomeDelivery> home = new Product<HomeDelivery>();
+                    home.DescProduct = "Игровая приставка";
+                    home.Description = "Почтовое отправление";
+                    home.Delivery = new HomeDelivery();    //объевление класса. Инциализация.
+                    home.Number = 128745;
+                    home.Delivery.IsDelivery = true; // доставка осуществляется курьером. 
                     Console.WriteLine("Введите адресс вашего дома:");
-                    product.Delivery.Address = Console.ReadLine();
-                    Console.WriteLine("Ваш адресс доставки {0}", product.Delivery.Address);
+                    home.Delivery.Address = Console.ReadLine();
+                    Console.WriteLine("Ваш адресс доставки {0}", home.Delivery.Address);
                     return inNum;
                     break;
                 case 1:
-                    Product<PickPointDelivery> Punkt = new Product<PickPointDelivery>();
-                    Punkt.Number = 128745;
-                    Punkt.Delivery = new PickPointDelivery();
-                    Punkt.Delivery.PickPoint();
+                    Product<PickPointDelivery> punkt = new Product<PickPointDelivery>();
+                    punkt.Number = 128745;
+                    punkt.Delivery = new PickPointDelivery();
+                    punkt.Delivery.PickPoint();
                     return inNum;
                     break;
                 case 2:
