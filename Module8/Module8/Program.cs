@@ -4,82 +4,39 @@ namespace module8
 {
     class Program
     {
+        // Допустим, нам нужно создать файл и записать в него информацию, в коде выполним следующие действия: 
+
+       // Проверим существование файла
+        ///Если не существует, создадим его и запишем строку.
+        //Откроем файл и прочитаем ранее записанную строку.
         static void Main(string[] args)
         {
-
-          //  GetCatalogs();
-            KolVo();
-            // получим системные диски
-         /*   DriveInfo[] drives = DriveInfo.GetDrives();
-
-            // Пробежимся по дискам и выведем их свойства
-            foreach (DriveInfo drive in drives)
+            string filePath = @"C:\Users\User\source\repos\module3\Module8\Module8\Program.cs"; // Укажем путь  C:\Users\User\source\repos\module3\Module8\Module8\Program.cs
+            if (!File.Exists(filePath)) // Проверим, существует ли файл по данному пути
             {
-                Console.WriteLine($"Название: {drive.Name}");
-                Console.WriteLine($"Тип: {drive.DriveType}");
-                if (drive.IsReady)
+                //   Если не существует - создаём и записываем в строку
+                using (StreamWriter sw = File.CreateText(filePath))  // Конструкция Using (будет рассмотрена в последующих юнитах)
                 {
-                    Console.WriteLine($"Объем: {drive.TotalSize}");
-                    Console.WriteLine($"Свободно: {drive.TotalFreeSpace}");
-                    Console.WriteLine($"Метка: {drive.VolumeLabel}");
+                    sw.WriteLine("Олег");
+                    sw.WriteLine("Дмитрий");
+                    sw.WriteLine("Иван");
                 }
-            }*/
-        }
-        static void GetCatalogs()
-        {
-            int k = 0; 
-            int t = 0; 
-            string dirName = @"C:\"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\")
-            if (Directory.Exists(dirName)) // Проверим, что директория существует
+            }
+            // Откроем файл и прочитаем его содержимое
+            using (StreamReader sr = File.OpenText(filePath))
             {
-                Console.WriteLine("Папки:");
-                string[] dirs = Directory.GetDirectories(dirName);  // Получим все директории корневого каталога
-
-                foreach (string d in dirs) // Выведем их все
-                { Console.WriteLine(d);
-                    k++;
-                    
-                }
-                Console.WriteLine("Количество папок {0}", k);
-                Console.WriteLine();
-
-                Console.WriteLine("Файлы:");
-                string[] files = Directory.GetFiles(dirName);// Получим все файлы корневого каталога
-
-                foreach (string s in files)   // Выведем их все
+                string str = "";
+                while ((str = sr.ReadLine()) != null) // Пока не кончатся строки - считываем из файла по одной и выводим в консоль
                 {
-                    Console.WriteLine(s);
-                    t++;
-                   
+                    Console.WriteLine(str);
                 }
-                Console.WriteLine("Количество файлов {0}", t);
-
             }
-
 
         }
-
-        static void KolVo()
-        {
-            try
-            {
-
-                ///перемещения каталога
-
-                DirectoryInfo newDirectory = new DirectoryInfo(@"C:\Users\User\Desktop\TestFolder");
-                
-                string newPath = @"C:\$RECYCLE.BIN\TestFolder";
-                
-                    newDirectory.MoveTo(newPath);
-                    Console.WriteLine("Выполнено перемещение в корзину");
-
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
+       
 
     }
 }
+
+
+
