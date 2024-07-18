@@ -2,12 +2,37 @@
 
 using Module8;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+#pragma warning disable SYSLIB0011
 
 namespace module8
 {
-   
+    
+    // Описываем наш класс и помечаем его атрибутом для последующей сериализации   
+
+    class Pet
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public Pet(string name, int age)
+        {
+            Name = name;
+            Age = age;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string dir = "D:\\HW1"; 
+            module8_Hw1 _Hw1 = new module8_Hw1(dir); 
+            
+        }
+    }
 
 }
 
 
-//G: 17.07.2024 13:26:27
+

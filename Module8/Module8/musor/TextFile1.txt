@@ -305,3 +305,24 @@
             }
         }
     }
+
+    ////////////////////////////////
+     // объект для сериализации
+            var person = new Pet("Rex", 2);
+            Console.WriteLine("Объект создан");
+
+            var formatter = new BinaryFormatter();
+            // получаем поток, куда будем записывать сериализованный объект
+            using (var fs = new FileStream("myPets.dat", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, person);
+                Console.WriteLine("Объект сериализован");
+            }
+            // десериализация
+            using (var fs = new FileStream("myPets.dat", FileMode.OpenOrCreate))
+            {
+                var newPet = (Pet)formatter.Deserialize(fs);
+                Console.WriteLine("Объект десериализован");
+                Console.WriteLine($"Имя: {newPet.Name} --- Возраст: {newPet.Age}");
+            }
+            Console.ReadLine();
