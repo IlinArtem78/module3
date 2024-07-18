@@ -27,13 +27,39 @@ namespace module8
         static void Main(string[] args)
         {
             string dir = "D:\\HW1";
-            DirectoryInfo N = new DirectoryInfo(dir);
-            long size; 
+            DirectoryInfo URL = new DirectoryInfo(dir);
+            long size;
+            Console.WriteLine("Выберите класс, который необходимо запустить (1, 2, 3 или 4)");
+            byte typeClass = byte.Parse(Console.ReadLine());
             
-            Task1 _Hw1 = new Task1(dir);
-            Task2 _Hw2 = new Task2();
-            size = _Hw2.Size(N);
-            Console.WriteLine("Размер папки {0} байт",size);            
+            switch(typeClass)
+            {
+                case 1:
+                    Task1 _Hw1 = new Task1(dir);
+                break;
+                case 2:
+                    Task2 _Hw2 = new Task2();
+                    size = _Hw2.Size(URL);
+                    Console.WriteLine("Размер папки {0} байт", size);
+                break;
+                case 3:
+                    Task3 _HW3 = new Task3();
+                    _HW3.dirName = dir;
+                    long size1 = _HW3.Size(URL);
+                    
+                    break; 
+                case 4:
+                                
+                break;
+                default:
+                    Console.WriteLine("Числа могут быть от 1 до 4"); 
+                    break; 
+            }
+            
+
+
+
+                    
 
         }
     }

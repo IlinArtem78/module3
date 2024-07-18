@@ -18,7 +18,7 @@ namespace Module8
         public long Size(DirectoryInfo d)
         {
             long size = 0;
-      
+          
             try
             {
                 
@@ -26,12 +26,14 @@ namespace Module8
                 FileInfo[] fls = d.GetFiles(); // Возвращает коллекцию строк только для чтения, представляющих имена путей к файлам в папке.
                 foreach (FileInfo fi in fls)
                 {
+                    
                     size += fi.Length;
                 }
 
                 DirectoryInfo[] dirs = d.GetDirectories(); //Возвращает подкаталоги текущего каталога.
                 foreach (DirectoryInfo di in dirs)
                 {
+                    
                     size += Size(di);
 
                 }
