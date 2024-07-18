@@ -26,9 +26,14 @@ namespace module8
     {
         static void Main(string[] args)
         {
-            string dir = "D:\\HW1"; 
-            module8_Hw1 _Hw1 = new module8_Hw1(dir); 
+            string dir = "D:\\HW1";
+            DirectoryInfo N = new DirectoryInfo(dir);   
             
+            module8_Hw1 _Hw1 = new module8_Hw1(dir);
+            module8_Hw2 _Hw2 = new module8_Hw2();
+            _Hw2.Size(N);
+            
+
         }
     }
 

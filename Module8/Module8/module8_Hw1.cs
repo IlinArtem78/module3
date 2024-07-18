@@ -17,7 +17,7 @@ namespace Module8
      */
     public class module8_Hw1
     {
-        public string dirName { get; set; }// @"D:\HW1";
+        public string dirName { get; set; } 
 
         
         public module8_Hw1(string dirName)
