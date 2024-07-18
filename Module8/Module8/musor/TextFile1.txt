@@ -125,4 +125,183 @@
         }
 
     /////     string filePath = @"C:\Users\User\source\repos\module3\Module8\Module8\Program.cs"; // Укажем путь  C:\Users\User\source\repos\module3\Module8\Module8\Program.cs
-         
+    class Program
+    {
+        // Допустим, нам нужно создать файл и записать в него информацию, в коде выполним следующие действия: 
+
+        // Проверим существование файла
+        ///Если не существует, создадим его и запишем строку.
+        //Откроем файл и прочитаем ранее записанную строку.
+        static void Main(string[] args)
+        {
+
+          
+           
+
+            string tempFile = @"C:\Users\User\Documents\TEST_INTOCH1.xml"; //Path.GetTempFileName(); // используем генерацию имени файла.
+            var fileInfo = new FileInfo(tempFile); // Создаем объект класса FileInfo.
+            DateTime dateTime = DateTime.Now;
+          
+            
+
+            //Открываем файл и читаем из него.
+           
+            Console.WriteLine(); 
+            /*
+            Сделайте так, чтобы ваша программа из задания 8.3.1 при каждом запуске добавляла в свой исходный код комментарий о времени последнего запуска. 
+            tring tempFile2 = Path.GetTempFileName();
+                var fileInfo2 = new FileInfo(tempFile2);
+
+                // Убедимся, что файл назначения точно отсутствует
+                fileInfo2.Delete();
+
+                // Копируем информацию
+                fileInfo.CopyTo(tempFile2);
+                Console.WriteLine($"{tempFile} скопирован в файл {tempFile2}.");
+                //Удаляем ранее созданный файл.
+                fileInfo.Delete();
+                Console.WriteLine($"{tempFile} удален.");
+            */
+
+            try
+            {
+                using (StreamWriter sr = fileInfo.AppendText())
+                {
+                    
+                    sr.WriteLine($"G: {dateTime:G}");
+                }
+                using (StreamReader sr = fileInfo.OpenText())
+                {
+                    string str = "";
+                    while ((str = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(str);
+                    }
+                }
+
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Ошибка: {e}");
+            }
+
+
+        }
+    }
+}
+
+////////////////////\
+
+
+  class BinaryExperiment
+    {
+        const string SettingsFileName = "Settings.cfg";
+
+        static void Main()
+        {
+            // Пишем
+            WriteValues();
+            // Считываем
+            ReadValues();
+        }
+
+        static void WriteValues()
+        {
+            // Создаем объект BinaryWriter и указываем, куда будет направлен поток данных
+            using (BinaryWriter writer = new BinaryWriter(File.Open(SettingsFileName, FileMode.Create)))
+            {
+                // записываем данные в разном формате
+                writer.Write(20.666F);
+                writer.Write(@"Тестовая строка");
+                writer.Write(55);
+                writer.Write(false);
+            }
+        }
+
+        static void ReadValues()
+        {
+            float FloatValue;
+            string StringValue;
+            int IntValue;
+            bool BooleanValue;
+
+            if (File.Exists(SettingsFileName))
+            {
+                // Создаем объект BinaryReader и инициализируем его возвратом метода File.Open.
+                using (BinaryReader reader = new BinaryReader(File.Open(SettingsFileName, FileMode.Open)))
+                {
+                    // Применяем специализированные методы Read для считывания соответствующего типа данных.
+                    FloatValue = reader.ReadSingle();
+                    StringValue = reader.ReadString();
+                    IntValue = reader.ReadInt32();
+                    BooleanValue = reader.ReadBoolean();
+                }
+
+                Console.WriteLine("Из файла считано:");
+
+                Console.WriteLine("Дробь: " + FloatValue);
+                Console.WriteLine("Строка: " + StringValue);
+                Console.WriteLine("Целое: " + IntValue);
+                Console.WriteLine("Булево значение " + BooleanValue);
+            }
+        }
+    }
+
+    /////////////////////////////////
+     class BinaryExperiment
+    {
+        const string SettingsFileName = @"C:\Users\User\Downloads\BinaryFile.bin";
+
+        static void Main()
+        {
+            // Пишем
+            WriteValues();
+            // Считываем
+            ReadValues();
+        }
+
+        static void WriteValues()
+        {
+            DateTime timeOnly = DateTime.Now;
+            
+            // Создаем объект BinaryWriter и указываем, куда будет направлен поток данных
+            using (BinaryWriter writer = new BinaryWriter(File.Open(SettingsFileName, FileMode.Append)))
+            {
+                // записываем данные в разном формате
+               // writer.Write(20.666F);
+                writer.Write($"Файл изменен {DateTime.Now}  на компьютере {Environment.OSVersion}");
+               // writer.Write(55);
+              //  writer.Write(false);
+            }
+        }
+
+        static void ReadValues()
+        {
+           
+            string DataValue;
+            string MyData;
+            //bool BooleanValue;
+
+            if (File.Exists(SettingsFileName))
+            {
+                // Создаем объект BinaryReader и инициализируем его возвратом метода File.Open.
+                using (BinaryReader reader = new BinaryReader(File.Open(SettingsFileName, FileMode.Open)))
+                {
+                    // Применяем специализированные методы Read для считывания соответствующего типа данных.
+                    
+                    DataValue = reader.ReadString();
+                   MyData = reader.ReadString();
+                    // BooleanValue = reader.ReadBoolean();
+                }
+
+                Console.WriteLine("Из файла считано:");
+
+                Console.WriteLine("Старые данные: " + DataValue);
+                 Console.WriteLine("Мои данные: " + MyData);
+                //  Console.WriteLine("Целое: " + IntValue);
+                //  Console.WriteLine("Булево значение " + BooleanValue);
+            }
+        }
+    }
