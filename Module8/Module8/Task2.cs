@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Module8
 {
-    public class module8_Hw2
+    public class Task2
     {
        
         public long Size(DirectoryInfo d)

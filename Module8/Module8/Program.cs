@@ -30,8 +30,8 @@ namespace module8
             DirectoryInfo N = new DirectoryInfo(dir);
             long size; 
             
-            module8_Hw1 _Hw1 = new module8_Hw1(dir);
-            module8_Hw2 _Hw2 = new module8_Hw2();
+            Task1 _Hw1 = new Task1(dir);
+            Task2 _Hw2 = new Task2();
             size = _Hw2.Size(N);
             Console.WriteLine("Размер папки {0} байт",size);            
 

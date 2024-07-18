@@ -15,12 +15,12 @@ namespace Module8
         При разработке постарайтесь предусмотреть возможные ошибки (нет прав доступа, папка по заданному адресу не существует, передан некорректный путь) и уведомить об этом пользователя.
      * 
      */
-    public class module8_Hw1
+    public class Task1
     {
         public string dirName { get; set; } 
 
         
-        public module8_Hw1(string dirName)
+        public Task1(string dirName)
         {
             this.dirName = dirName;
             TimeSpan thirtyMinutes = new TimeSpan(0, 30, 0);
