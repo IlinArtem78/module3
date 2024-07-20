@@ -369,3 +369,21 @@
         }
 
     }
+
+    ///////////////////////////
+       if (student.Name.Length == student.Name.Length)
+                    {
+                        foreach (char c in student.Group)
+                        {
+                            char nextChar = student.Group[student.Group.Length - 1];
+                            // char prevChar = ' ';
+                            Console.WriteLine(c);
+                            // Проверяем, отличаются ли символы по кодировке Unicode
+                            if (Char.GetUnicodeCategory(nextChar) != Char.GetUnicodeCategory(c) & student.Name.Length == student.Name.Length)
+                            {
+                                Console.WriteLine($"Символы {nextChar} и {c} отличаются по кодировке Unicode");
+                            }
+                     //       nextChar = c; // Запоминаем текущий символ как предыдущий
+
+                        }
+                    }

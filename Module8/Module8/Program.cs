@@ -49,19 +49,24 @@ namespace module8
                     
                     break; 
                 case 4:
-                                
+         
+                    string dir1 = "C:\\Users\\User\\Downloads\\students.dat";
+                    Task4 _HW4 = new Task4(dir1);            
                 break;
                 default:
                     Console.WriteLine("Числа могут быть от 1 до 4"); 
                     break; 
             }
+
             
 
-
-
-                    
+            Console.ReadKey();
 
         }
+
+
+       
+
     }
 
 }
