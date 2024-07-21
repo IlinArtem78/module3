@@ -11,6 +11,8 @@ using System.Xml.Linq;
 using System.Security.Authentication;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Collections;
+using System.Text.Json;
+using System.IO;
 
 
 /*
@@ -41,17 +43,25 @@ namespace Module8
     public class Task4
     {
         public string SettingsFileName;
-        public string path = @"D:\Student";
+        public string path = @"C:\Users\Public\Documents\Student";
         public Task4(string SettingFileName)
         {
             this.SettingsFileName = SettingFileName;
-
+            string path1 = "C:\\Users\\Public\\Documents\\Student\\OneGroup.txt";
+            string path2 = "C:\\Users\\Public\\Documents\\Student\\TwoGroup.txt";
 
          //   string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-           
-         //   string path1 = "C:\\Users\\User\\Desktop\\Student\\";
-            Directory.CreateDirectory(path); //Созадние директори
 
+            //   string path1 = "C:\\Users\\User\\Desktop\\Student\\";
+            if (!Directory.Exists(path))
+            {  Directory.CreateDirectory(path);
+               
+            }   
+            else
+            {
+                Console.WriteLine("Папка уже создана");
+            }
+            
             if (File.Exists(SettingsFileName)) //если существует бинарный файл, то^
             {
 
@@ -91,23 +101,43 @@ namespace Module8
                 {
                     if (Students[i].Group == Students[i + 1].Group)
                     {
-                        Console.WriteLine("Группы различны, создается текстовый файл");
+                          
+                        Console.WriteLine("Группы одинаковый, создается текстовый файл");
                         try
                         {
-                            using (StreamWriter sw = File.CreateText(path))
-                            {
+                            // File StreamWriter writer = new StreamWriter(path, true)
 
+                           
+                            using (StreamWriter sw = new StreamWriter(path1, true, System.Text.Encoding.Default))
+                            {
                                 sw.WriteLine(Students[i].Name);
                                 sw.WriteLine(Students[i].DateOfBirth);
                                 sw.WriteLine(Students[i].AverBall);
+                                sw.WriteLine(Students[i+1].Name); 
+                                
+                                sw.WriteLine(Students[i+1].DateOfBirth);
+                               
+                                sw.WriteLine(Students[i+1].AverBall);
+                                
+
+
+                               sw.Close();
                             }
+
+                            
+
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.Message);
-
+                             
                         }
 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Люди участься в разных. не добавляем их в файл");
+                        path1 = path2;
                     }
 
                 }
@@ -117,6 +147,7 @@ namespace Module8
             {
                 Console.WriteLine("Указан неверный путь до исходного бинарного файлая. Проверьте путь!");
             }
+
         }
 
        

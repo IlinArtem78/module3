@@ -387,3 +387,22 @@
 
                         }
                     }
+
+
+                    /////////////////////////////////
+                      using (StreamWriter sw = new StreamWriter("", true, System.Text.Encoding.Default))
+                            {
+                                sw.WriteLine(Students[i].Name);
+                                sw.WriteLine(Students[i].DateOfBirth);
+                                sw.WriteLine(Students[i].AverBall);
+                            }
+
+                            ///////////////////////
+
+
+                             var options = new JsonSerializerOptions { WriteIndented = true };
+                            var jsonString = JsonSerializer.Serialize(Students, options);
+
+                            File.WriteAllText("Students.json", jsonString);
+                            File.Copy("Students.json", "C:\\Users\\Public\\Documents\\Student\\Students.json");
+                            Console.WriteLine("Объект сериализован");

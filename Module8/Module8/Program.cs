@@ -3,6 +3,7 @@
 using Module8;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 
 #pragma warning disable SYSLIB0011
 
@@ -50,9 +51,28 @@ namespace module8
                     break; 
                 case 4:
          
-                    string dir1 = "C:\\Users\\User\\Downloads\\students.dat";
+                    string dir1 = "C:\\Users\\User\\source\\repos\\module3\\Module8\\Module8\\musor\\students.dat";
                     Task4 _HW4 = new Task4(dir1);            
                 break;
+
+                case 5:
+                    // объект для сериализации
+                    var person = new Pet("Rex", 2);
+                    Console.WriteLine("Объект создан");
+                    // сериализация
+                    var options = new JsonSerializerOptions { WriteIndented = true };
+                    var jsonString = JsonSerializer.Serialize(person, options);
+                    File.WriteAllText("myPets.json", jsonString);
+                    Console.WriteLine("Объект сериализован");
+                    // десериализация
+                    jsonString = File.ReadAllText("myPets.json");
+                    var newPet = JsonSerializer.Deserialize<Pet>(jsonString);
+                    Console.WriteLine("Объект десериализован");
+                    Console.WriteLine($"Имя: {newPet.Name} --- Возраст: {newPet.Age}");
+                    Console.ReadLine();
+
+
+                    break;
                 default:
                     Console.WriteLine("Числа могут быть от 1 до 4"); 
                     break; 

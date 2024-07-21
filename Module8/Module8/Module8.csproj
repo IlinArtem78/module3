@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="musor\students.dat" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="musor\students.dat" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Program.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
